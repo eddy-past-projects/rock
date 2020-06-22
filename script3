@@ -1,0 +1,70 @@
+message = document.querySelector('.message');
+buttons = document.querySelectorAll('button');
+score = document.querySelector('.score');
+let computerPicks = [ 'Rock', 'Paper', 'Scissors' ];
+console.log(typeof buttons);
+let scores = [ 0, 0 ];
+
+for (let i = 0; i < buttons.length; i++) {
+	buttons[i].addEventListener('click', playgame);
+}
+//why does this not work with
+//playgame = () => {}
+function playgame(e) {
+	let playerScore = e.target.innerText;
+	let computerScore = computerPicks[Math.floor(Math.random() * computerPicks.length)];
+	// console.log(player, computer);
+	//result is a string
+	let result = checkWinner(playerScore, computerScore);
+
+	if (result === 'Player') {
+		result += ' wins!';
+		scores[0]++;
+	}
+	if (result === 'Computer') {
+		result += ' wins!';
+		scores[1]++;
+	}
+	if (result === 'Draw') {
+		result += " It's a tie!";
+	}
+
+	//output player and computer's selections
+	//output score into Score DIV
+	score.innerHTML = 'Player: [ ' + scores[0] + ' ] Computer: [ ' + scores[1] + ' ]';
+
+	messenger(
+		'Player: <strong>' + playerScore + '</strong> Computer: <strong>' + computerScore + '</strong><br>' + result
+	);
+}
+
+function messenger(selectionMessage) {
+	message.innerHTML = selectionMessage;
+}
+function checkWinner(player, computer) {
+	if (player === computer) {
+		return 'Draw. ';
+	}
+
+	if (player === 'Rock') {
+		if (computer === 'Scissors') {
+			return 'Player';
+		} else {
+			return 'Computer';
+		}
+	}
+	if (player === 'Paper') {
+		if (computer === 'Rock') {
+			return 'Player';
+		} else {
+			return 'Computer';
+		}
+	}
+	if (player === 'Scissors') {
+		if (computer === 'Paper') {
+			return 'Player';
+		} else {
+			return 'Computer';
+		}
+	}
+}
