@@ -32,34 +32,34 @@ function playgame(e) {
 	if (result === 'Draw') {
 		outcome.innerText = "It's a tie!";
 	}
+}
 
-	function checkWinner(player, computer) {
-		if (player === computer) {
-			return 'Draw';
+function checkWinner(player, computer) {
+	if (player === computer) {
+		return 'Draw';
+	}
+
+	if (player === 'ROCK') {
+		if (computer === 'PAPER') {
+			return 'Computer';
+		} else {
+			return 'Player';
 		}
+	}
 
-		if (player === 'ROCK') {
-			if (computer === 'PAPER') {
-				return 'Computer';
-			} else {
-				return 'Player';
-			}
+	if (player === 'PAPER') {
+		if (computer === 'SCISSORS') {
+			return 'Computer';
+		} else {
+			return 'Player';
 		}
+	}
 
-		if (player === 'PAPER') {
-			if (computer === 'SCISSORS') {
-				return 'Computer';
-			} else {
-				return 'Player';
-			}
-		}
-
-		if (player === 'SCISSORS') {
-			if (computer === 'ROCK') {
-				return 'Computer';
-			} else {
-				return 'Player';
-			}
+	if (player === 'SCISSORS') {
+		if (computer === 'ROCK') {
+			return 'Computer';
+		} else {
+			return 'Player';
 		}
 	}
 }
